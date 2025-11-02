@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Monitor del Sistema</title>
+    <meta http-equiv="refresh" content="5"> <!-- auto refresh -->
+    <style>
+        body { font-family: Arial; background:#f6f6f6; padding:20px; }
+        .card { background:white; padding:20px; margin:10px; border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,.2);}
+        .container { display:flex; gap:10px; flex-wrap:wrap;}
+        .title { font-size:24px; font-weight:bold;}
+    </style>
+</head>
+<body>
+    <h2 class="title">📊 Monitor del Sistema</h2>
+
+    <a href=""><button>Actualizar</button></a>
+
+    {% if datos.error %}
+        <p>Error: {{ datos.error }}</p>
+    {% else %}
+    <div class="container">
+
+        <div class="card">
+            <h3>CPU</h3>
+            <p>Uso: {{ datos.cpu }}%</p>
+        </div>
+
+        <div class="card">
+            <h3>Memoria RAM</h3>
+            <p>Total: {{ datos.ram_total }} GB</p>
+            <p>Usada: {{ datos.ram_usada }} GB ({{ datos.ram_porcentaje }}%)</p>
+        </div>
+
+        <div class="card">
+            <h3>Disco</h3>
+            <p>Total: {{ datos.disco_total }} GB</p>
+            <p>Usado: {{ datos.disco_usado }} GB ({{ datos.disco_porcentaje }}%)</p>
+            <p>Libre: {{ datos.disco_libre }} GB</p>
+        </div>
+
+        <div class="card">
+            <h3>Sistema</h3>
+            <p>SO: {{ datos.so }} {{ datos.version }}</p>
+            <p>Núcleos: {{ datos.nucleos }}</p>
+        </div>
+
+    </div>
+    {% endif %}
+</body>
+</html>
